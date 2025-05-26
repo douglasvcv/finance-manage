@@ -4,9 +4,7 @@ const {Schema, model} = mongoose
 const userSchema = new Schema ({
     email:String,
     senha:String,
-    createAt: Date
-})
-
+}, {timestamps:true})
 const User = model("User", userSchema)
 
 export default User
