@@ -9,4 +9,7 @@ export const routes = Router()
 routes.post("/api/auth/register", async (req, res)=>{
     UserController.create(req,res)
 })
+routes.post("/api/auth/login", async (req, res)=>{
+    UserController.login(req,res)
+})
 
