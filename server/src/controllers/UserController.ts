@@ -8,13 +8,6 @@ class UserController{
     //Metodo para se registrar: Completo-Beta
    async create(req:Request, res:Response){
         const {email, senha, confirmSenha} = req.body
-        if(email == null || senha == null){
-          return  res.status(404).json({msg:"Preencha todos os campos"})
-        }
-        if(senha != confirmSenha){
-            return  res.status(404).json({msg:"Senhas não conferem!"})
-
-        }
         const existUser = await User.find({email:email})
         if(existUser.length < 1){
             
@@ -33,9 +26,7 @@ class UserController{
     //Metodo para logar no site: Em construção
     async login(req:Request, res:Response){
         const {email, senha} = req.body
-         if(email == null || senha == null){
-          return  res.status(400).json({msg:"Preencha todos os campos"})
-        }
+       
         const findUser = await User.findOne({email:email})
         if(!findUser){
             return  res.status(404).json({msg:"Usuário não encontrado!"})
@@ -46,7 +37,7 @@ class UserController{
         if(senhaCorreta == false){
             return  res.status(400).json({msg:"Senha incorreta!"})
         }
-        const secret = String(process.env.SECRET)
+        const secret = process.env.SECRET
         if(!secret){
             return  res.status(500).json({msg:"Verifique se a varável de ambiente está definida"})
 
