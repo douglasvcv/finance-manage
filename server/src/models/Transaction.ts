@@ -12,7 +12,10 @@ interface ITransaction extends Document {
 }
 
 const TransactionModel = new Schema<ITransaction>({
-    user:mongoose.Schema.Types.ObjectId,
+    user:{
+        type:String,
+        required:true,
+    },
     type:{
         type:String,
         enum:["income", "expense"],
@@ -29,4 +32,6 @@ const TransactionModel = new Schema<ITransaction>({
     createdAt:{type:Date, default:Date.now}
 })
 
-export default TransactionModel
+const Transaction = model("transaction", TransactionModel)
+
+export default Transaction
