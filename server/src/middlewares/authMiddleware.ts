@@ -2,9 +2,16 @@ import { Request, Response, NextFunction, RequestHandler } from "express"
 import "dotenv/config"
 import { verify } from "jsonwebtoken"
 
-export async function authMiddleware(req: Request, res: Response, next: NextFunction) {
-    try {
-        
+declare global{
+namespace Express{
+    interface Request{
+        userId?:string
+    }
+}
+}
+
+export const authMiddleware = (async (req:Request, res: Response, next: NextFunction)=> {
+    try { 
         const { authorization } = req.headers as Record<string, any>
         if (!authorization) {
             res.status(401).json({ msg: "Autorização falhou!" })
@@ -16,22 +23,18 @@ export async function authMiddleware(req: Request, res: Response, next: NextFunc
             return
         }
     const [schema, token] = parts
-    if (schema !== "Bearer") {
+    if (schema !== "Bearer" || !token) {
         res.status(401).json({ msg: "Autorização falhou!" })
         return
     }
     
     const secret = String(process.env.SECRET)
-    const tokenVerify = verify(token, secret, (err, decoded) => {
-        if(err){
-            res.status(401).json({ msg: "Autorização falhou: ",err })
-        }
-        console.log(decoded)
-    })
+    const tokenVerify = verify(token, secret) as {userId:string}
+    req.userId = tokenVerify.userId
     next()
 } catch (error) {
     res.status(401).json({ msg: "Autorização falhou: ", error })
     
 }
 
-}
+}) as RequestHandler
