@@ -1,5 +1,4 @@
-import { Request, RequestHandler, Response } from "express";
-import  jwt  from "jsonwebtoken";
+import { Request, Response } from "express";
 import TransactionModel from "../models/Transaction"; 
 import User from "../models/User";
 
