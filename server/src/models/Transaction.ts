@@ -8,7 +8,8 @@ interface ITransaction extends Document {
     amount: number,
     description:string
     type:TransactionType,
-    createdAt: Date
+    createdAt: Date,
+    category:mongoose.Schema.Types.ObjectId
 }
 
 const TransactionModel = new Schema<ITransaction>({
@@ -28,6 +29,11 @@ const TransactionModel = new Schema<ITransaction>({
     amount:{
         type:Number,
         required:true
+    },
+    category:{
+        type:mongoose.Schema.Types.ObjectId,
+        required:true,
+        ref:"Category"
     },
     createdAt:{type:Date, default:Date.now}
 })
