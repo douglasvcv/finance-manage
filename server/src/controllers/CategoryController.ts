@@ -25,9 +25,19 @@ class CategoryController{
         }
         return res.status(200).json(findCategories)
     }
-    update(req:Request, res:Response){
+    async update(req:Request, res:Response){
+        const {name, newName} = req.body
+        const userId = req.userId
+        const filter = {name:name, user:userId}
+        const update = {name:newName}
+        const findCategories = await Category.findOneAndUpdate(filter, update)
+        if(findCategories == null){
+            return res.status(404).json({msg:"Nenhuma categoria encontrada!"})
+        }
         
+        return res.status(200).json({msg:"Alterações realizadas!"})
     }
+    
 }
 
 export default new CategoryController

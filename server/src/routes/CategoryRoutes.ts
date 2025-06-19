@@ -13,8 +13,8 @@ route.post("/categories", validateRequiredFields(["name"]), authMiddleware, (req
 route.get("/categories",authMiddleware, (req, res)=>{
     CategoryController.show(req,res)
 })
-route.put("/categories/:id",authMiddleware, (req, res)=>{
-    CategoryController.show(req,res)
+route.put("/categories",authMiddleware, (req, res)=>{
+    CategoryController.update(req,res)
 })
 
 
