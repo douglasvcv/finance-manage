@@ -7,7 +7,7 @@ import { authMiddleware } from "../middlewares/authMiddleware";
 
 const route = Router()
 
-route.post("/transactions", validateRequiredFields(["amount", "description", "type"]),authMiddleware, (req, res)=>{
+route.post("/transactions", validateRequiredFields(["amount", "description", "type", "category"]),authMiddleware, (req, res)=>{
     TransactionController.create(req,res)
 })
 
