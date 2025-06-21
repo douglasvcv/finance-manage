@@ -13,10 +13,12 @@ route.post("/categories", validateRequiredFields(["name"]), authMiddleware, (req
 route.get("/categories",authMiddleware, (req, res)=>{
     CategoryController.show(req,res)
 })
-route.put("/categories",authMiddleware, (req, res)=>{
+route.put("/categories",validateRequiredFields(["name"]),authMiddleware, (req, res)=>{
     CategoryController.update(req,res)
 })
-
+route.delete("/categories", authMiddleware, (req,res)=>{
+    CategoryController.delete(req,res)
+})
 
 
 export default route

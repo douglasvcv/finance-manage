@@ -6,7 +6,7 @@ class CategoryController{
    async create(req:Request, res:Response){
         const {name} = req.body
         const userId = req.userId
-        const verifyName = await Category.find({name:name})
+        const verifyName = await Category.find({name:name, user:userId})
         if(verifyName.length >0){
             return res.status(404).json({msg:"Categoria existente, tente outro nome!"})
         }
@@ -37,7 +37,19 @@ class CategoryController{
         
         return res.status(200).json({msg:"Alterações realizadas!"})
     }
-    
+    async delete(req:Request, res:Response){
+        const {name} = req.body
+        const userId = req.userId
+        const filter = {name: name, user:userId}
+        const findId = await Category.find(filter)
+        if(findId.length==0){
+            return res.status(404).json({msg:"Nenhuma categoria encontrada!"})
+        }
+        const id = findId[0].id
+        const findCategories = await Category.findByIdAndDelete(id)
+        
+        return res.status(200).json({msg:"Categoria excluída!"})
+    }
 }
 
 export default new CategoryController
