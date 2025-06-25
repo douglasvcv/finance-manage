@@ -54,6 +54,72 @@ class DashboardController {
     }
     return res.status(200).json(allCategoriesWithTotalAmount)
   }
+  
+  async summaryByMonth(req:Request, res:Response){
+    const userId = req.userId
+    
+    
+    const findTransaction = await TransactionModel.find({user:userId})
+    
+    const month=[
+      {
+        month:"Janeiro",
+        amount: 0
+      },
+      {
+        month:"Fevereiro",
+        amount: 0
+      },
+      {
+        month:"Março",
+        amount: 0
+      },
+      {
+        month:"Abril",
+        amount: 0
+      },
+      {
+        month:"Maio",
+        amount: 0
+      },
+      {
+        month:"Junho",
+        amount: 0
+      },
+      {
+        month:"Julho",
+        amount: 0
+      },
+      {
+        month:"Agosto",
+        amount: 0
+      },
+      {
+        month:"Setembro",
+        amount: 0
+      },
+      {
+        month:"Outubro",
+        amount: 0
+      },
+      {
+        month:"Novembro",
+        amount: 0
+      },
+      {
+        month:"Dezembro",
+        amount: 0
+      }
+    ]
+    
+    for(let i = 0; i < findTransaction.length; i++){
+      const date = findTransaction[i].createdAt.getMonth()
+      month[date].amount+=findTransaction[i].amount
+    }
+    let reduceMonth = month.filter(e=>e.amount>0)
+    return res.status(200).json(reduceMonth)
+    
+  }
 }
 
 export default new DashboardController

@@ -11,5 +11,8 @@ route.get("/dashboard",authMiddleware, (req, res)=>{
 route.get("/dashboard/summary-by-category", authMiddleware, (req,res)=>{
     DashboardController.summaryByCategory(req,res)
 })
+route.get("/dashboard/summary-by-month", authMiddleware, (req,res)=>{
+    DashboardController.summaryByMonth(req,res)
+})
 
 export default route
