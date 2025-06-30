@@ -1,0 +1,73 @@
+/categories:
+  get:
+    tags:
+      - Category
+    summary: Lista todas as categorias
+    security:
+      - bearerAuth: []
+    responses:
+      200:
+        description: Lista de categorias retornada com sucesso
+      401:
+        description: Token inválido  
+  post:
+      tags:
+        - Category
+      summary: Registro de categorias
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  example: "Lazer"
+      responses:
+        201:
+          description: Categoria criada!
+  put:
+      tags:
+        - Category
+      summary: Modifica alguma categoria
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - newName
+              properties:
+                name:
+                  type: string
+                  example: "Lazer"
+                newName:
+                  type: string
+                  example: "Viagem"
+      responses:
+        201:
+          description: Categoria modificada!
+  delete:
+      tags:
+        - Category
+      summary: Exclui alguma categoria
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  example: "Viagem"
+      responses:
+        200:
+          description: Categoria excluída!

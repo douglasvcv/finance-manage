@@ -1,8 +1,0 @@
-getAllUsers:
-  get:
-    tags:
-      - Users
-    summary: Lista todos os usuários
-    responses:
-      200:
-        description: Lista de usuários retornada com sucesso

@@ -1,0 +1,42 @@
+/api/transactions:
+  post:
+      tags:
+        - Transactions
+      summary: Registro de transações
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - category
+                - type
+                - description
+                - amount
+              properties:
+                category:
+                  type: string
+                  example: "Trabalho"
+                type:
+                  type: string
+                  example: "expense"
+                description:
+                  type: string
+                  example: "Pagamento de um boleto"
+                amount:
+                  type: number
+                  example: 300
+      responses:
+        201:
+          description: Transação criada!
+  
+  get:
+    tags:
+      - Transactions
+    summary: Listagem de todas as transações
+    responses:
+      200:
+        description: Listagem de transações!
+      401:
+        description: Erro na listagem de transações!

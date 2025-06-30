@@ -17,10 +17,13 @@
               properties:
                 email:
                   type: string
+                  example: "Exesssmploss@gmail.com"
                 senha:
                   type: string
+                  example: "12345678"
                 confirmSenha:
                   type: string
+                  example: "12345678"
       responses:
         201:
           description: Usuário criado com sucesso!
@@ -42,8 +45,10 @@
               properties:
                 email:
                   type: string
+                  example: "Exesssmploss@gmail.com"
                 senha:
                   type: string
+                  example: "123456"
       responses:
         200:
           description: Login realizado com sucesso!

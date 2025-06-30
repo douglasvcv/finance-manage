@@ -1,0 +1,31 @@
+/api/dashboard:
+  get:
+      tags:
+        - Dashboard
+      summary: Total de renda e despesas e a diferença
+      responses:
+        200:
+          description: Total de renda e despesas e a diferença mostrada!
+        404:
+          description: Erro no calculo da quantia!
+
+/api/dashboard/summary-by-category:
+  get:
+      tags:
+        - Dashboard
+      summary: Diferença de transações por categoria
+      responses:
+        200:
+          description: Diferença por categoria mostrada!
+        404:
+          description: Erro no calculo da diferença por categoria!
+/api/dashboard/summary-by-month:
+  get:
+      tags:
+        - Dashboard
+      summary: Diferença de transações por mês
+      responses:
+        200:
+          description: Diferença por mês mostrada!
+        404:
+          description: Erro no calculo da diferença por mês!
