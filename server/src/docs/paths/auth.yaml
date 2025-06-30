@@ -1,0 +1,49 @@
+
+  /api/auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Registro de usuário
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - senha
+                - confirmSenha
+              properties:
+                email:
+                  type: string
+                senha:
+                  type: string
+                confirmSenha:
+                  type: string
+      responses:
+        201:
+          description: Usuário criado com sucesso!
+
+  /api/auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Login de usuário
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - senha
+              properties:
+                email:
+                  type: string
+                senha:
+                  type: string
+      responses:
+        200:
+          description: Login realizado com sucesso!
