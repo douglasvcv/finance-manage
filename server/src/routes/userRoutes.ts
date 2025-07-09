@@ -9,7 +9,7 @@ route.post("/register", validateRequiredFields(["email", "senha", "confirmSenha"
 })
 
 route.post("/login",validateRequiredFields(["email", "senha"]), async (req, res)=>{
-    
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173')
     UserController.login(req,res)
 })
 
