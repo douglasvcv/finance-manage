@@ -50,14 +50,14 @@ const Login = () => {
     return (
         <>
             <div className="bg-[#F1F4EF] h-screen flex justify-center items-center flex-col">
-                <h1 className="text-6xl font-bold">FinDei</h1>
-                <div className="bg-white min-w-[28%] min-h-[50%] p-[7%] rounded-2xl mt-[60px]">
-                    <form onSubmit={(e) => handleSubmit(e)} className="flex flex-col w-[30vw]">
-                        <label htmlFor="email" className="mt-[-10px] font-bold">Seu Email:</label>
-                        <input className="mb-[20px] w-[100%] h-[40px] rounded-xl text-center border focus:" name="email" id="email" type="text" placeholder="Email" onChange={(e) => handleEmail(e)} />
+                <h1 className="text-6xl font-bold text-[#2F473F]">FinDei</h1>
+                <div className="bg-white min-w-[28%] flex justify-center items-center min-h-[50%] p-[7%] rounded-2xl mt-[60px]">
+                    <form onSubmit={(e) => handleSubmit(e)} className="flex flex-col justify-center h-[100%] w-[80vw]">
+                        <label htmlFor="email" className="font-bold">Seu Email:</label>
+                        <input className="mb-[20px] border-none shadow-md w-[100%] h-[40px] rounded-xl text-center border focus:outline-transparent" name="email" id="email" type="text" placeholder="Email" onChange={(e) => handleEmail(e)} />
                         <label htmlFor="senha" className=" font-bold">Sua Senha:</label>
-                        <input className="mb-[20px] w-[100%] h-[40px] rounded-xl text-center border" name="senha" id="senha" type="password" placeholder="Senha" onChange={(e) => handleSenha(e)} />
-                        <button  type="submit">Entrar</button>
+                        <input className="mb-[20px] border-none shadow-md w-[100%] h-[40px] rounded-xl text-center border focus:outline-transparent" name="senha" id="senha" type="password" placeholder="Senha" onChange={(e) => handleSenha(e)} />
+                        <button className="mt-9 mx-auto bg-black text-white w-35 h-15 text-center rounded-xl" type="submit">Entrar</button>
                     </form>
                     
                 </div>
