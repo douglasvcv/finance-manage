@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react";
 
-const Login = () => {
+const Register = () => {
 
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
-    const [incorreto, setIncorreto] = useState<boolean>(false)
-    const navigate = useNavigate()
+    const [Result, setResult] = useState<{ token: string; user: { email: string } } | null>(null)
+    
 
     const handleEmail = (e: any) => {
         setEmail(e.target.value)
@@ -16,10 +15,11 @@ const Login = () => {
         setSenha(e.target.value)
 
     }
+    const handleConfirmSenha = (e: any) => {
+        setSenha(e.target.value)
 
-    const redirectToPage = ()=>{
-        navigate("/dashboard")
     }
+
     const handleSubmit = async (e: any) => {
         e.preventDefault()
         try {
@@ -28,7 +28,7 @@ const Login = () => {
                 senha: senha
             }
             const valueJson = JSON.stringify(payload)
-            const data = await fetch("http://localhost:8080/api/auth/login", {
+            const data = await fetch("http://localhost:8080/api/auth/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -39,22 +39,20 @@ const Login = () => {
                 throw new Error("Erro ao fazer login")
             }
             const result = await data.json()
-            console.log(result)
-            if(result.token){
-                redirectToPage()
-                sessionStorage.setItem("token", result.token)
-            }
-            if(result.msg){
-                setIncorreto(!incorreto)
-            }
+            setResult(result)
+            sessionStorage.setItem("token", result.token)
+            
         } catch (error) {
             console.error(error)
         }
+
     }
     useEffect(() => {
+        console.log("Result aí caba vei: ", Result)
         console.log("Email aí caba vei: ", email)
         console.log("Senha aí caba vei: ", senha)
-    }, [ email, senha])
+    }, [Result, email, senha])
+
     return (
         <>
             <div className="bg-[#F1F4EF] h-screen flex justify-center items-center flex-col">
@@ -64,7 +62,7 @@ const Login = () => {
                 md:max-w-[50%]
                 ">
                     <form onSubmit={(e) => handleSubmit(e)} className="
-                    flex flex-col justify-around items-center h-[100%] w-[80vw]
+                    flex flex-col justify-center items-center h-[100%] w-[100vw]
                     md:w-[40w] 
                     ">
                         <label htmlFor="email" className="font-bold text-xl">Seu Email:</label>
@@ -77,13 +75,18 @@ const Login = () => {
                         mb-[20px] border-none shadow-md w-[100%] h-[40px] rounded-xl text-center border cursor-pointer focus:outline-transparent
                         md:w-[80%]
                         " name="senha" id="senha" type="password" placeholder="Senha" onChange={(e) => handleSenha(e)} />
-                        <button className="mt-9 mx-auto bg-black text-white w-35 h-15 text-center rounded-xl cursor-pointer" type="submit">Entrar</button>
-                        {incorreto ? <p className="text-red-800 mt-5">Login incorreto</p> : <p className="mt-5 text-green-800">Faça o login</p>}                    
+                        <label htmlFor="senha" className=" font-bold text-xl">Confirme a senha:</label>
+                        <input className="
+                        mb-[20px] border-none shadow-md w-[100%] h-[40px] rounded-xl text-center border cursor-pointer focus:outline-transparent
+                        md:w-[80%]
+                        " name="senha" id="senha" type="password" placeholder="Confirme a Senha" onChange={(e) => handleConfirmSenha(e)} />
+                        <button className="mt-9 mx-auto bg-black text-white w-35 h-15 text-center rounded-xl cursor-pointer" type="submit">Cadastrar</button>
                     </form>
+
                 </div>
             </div>
         </>
     )
 }
 
-export default Login
+export default Register
