@@ -43,7 +43,7 @@ class UserController{
 
         }
         try {
-            const token = sign({userId: findUser.id},  secret, {expiresIn:1000})
+            const token = sign({userId: findUser.id},  secret, {expiresIn:3000})
             return res.status(200).json({token, user:{
                 id:findUser.id,
                 email: findUser.email
