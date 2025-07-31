@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import hamburguerIMG from "../../assets/images/hamburger.png"
 import closedIMG from "../../assets/images/x.png"
+import DashboardCategory from "./DashboardCategory"
 
 const Dashboard = () => {
 
@@ -17,7 +18,7 @@ const Dashboard = () => {
                 {
                     method:"GET",
                     headers:{
-                        "Content-Type": "application/json;",
+                        "Content-Type": "application/json",
                         "Authorization": "Bearer "+ token
                     },
                 }
@@ -33,7 +34,7 @@ const Dashboard = () => {
     }
 
     useEffect(()=>{
-        
+        fetchTotal()
     })
 
     return (
@@ -56,8 +57,8 @@ const Dashboard = () => {
                         <h2>Saídas: {total.totalExpense}</h2>
                         <h2>Saldo: {total.balance}</h2>
                     </li>
-                    <button onClick={fetchTotal}>Teste apenas</button>
                 </ul>
+                <DashboardCategory/>
             </div>
         </>
     )
