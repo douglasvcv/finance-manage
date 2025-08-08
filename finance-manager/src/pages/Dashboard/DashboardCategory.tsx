@@ -2,11 +2,8 @@ import { useEffect, useState } from "react"
 
 const DashboardCategory = () => {
 
-    const [open, setOpen] = useState<boolean>(false)
     const [data, setData] = useState<object[]>([])
-    function handleMenu() {
-        setOpen(!open)
-    }
+
 
     async function searchDashCategory() {
         const token = sessionStorage.getItem("token")
@@ -35,7 +32,7 @@ const DashboardCategory = () => {
     })
     return (
         <>
-            <div className="h-[100vh]">
+            <div >
                 <ul className="flex flex-col items-center text-center w-[100%]
                 md:justify-center md:w-[60%] md:m-auto
                 ">
