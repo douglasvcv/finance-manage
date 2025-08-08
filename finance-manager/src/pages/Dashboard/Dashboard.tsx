@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import hamburguerIMG from "../../assets/images/hamburger.png"
 import closedIMG from "../../assets/images/x.png"
 import DashboardCategory from "./DashboardCategory"
+import DashboardMonth from "./DashboardMonth"
 
 const Dashboard = () => {
 
@@ -41,11 +42,8 @@ const Dashboard = () => {
         <>
             <div className="h-[100vh]">
                 <header className="w-[100vw] h-[63px] flex justify-center items-center shadow-xl">
-                    <ul className="flex w-[100%] items-center justify-around">
+                    <ul className="flex w-[100%] items-center justify-start">
                         <li><button><img src={open ? closedIMG : hamburguerIMG} onClick={handleMenu} className="w-[70px] cursor-pointer p-2"></img></button></li>
-                        <li><button className="cursor-pointer p-2 font-semibold">Resumo padrão</button></li>
-                        <li><button className="cursor-pointer p-2 font-semibold">Resumo por categoria</button></li>
-                        <li><button className="cursor-pointer p-2 font-semibold">Resumo por mês</button></li>
                     </ul>
                 </header>
                 <ul className="flex flex-col items-center text-center w-[100%]
@@ -59,6 +57,7 @@ const Dashboard = () => {
                     </li>
                 </ul>
                 <DashboardCategory/>
+                <DashboardMonth/>
             </div>
         </>
     )
