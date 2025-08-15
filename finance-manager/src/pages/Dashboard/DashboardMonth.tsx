@@ -48,20 +48,27 @@ const DashboardMonth = () => {
     })
     return (
         <>
-            <div className="h-[100vh]">
-                <ul className="flex flex-col items-center text-center w-[100%]
-                md:justify-center md:w-[60%] md:m-auto
-                ">
-                    <h1 className="mt-3 text-4xl font-[Roboto] font-bold">Por Mês:</h1>
-                    {data.length > 0 ? data.map((x: any) => <li className="bg-green-800 flex flex-col my-2 h-[140px] w-[80vw] items-center justify-center rounded-xl text-xl font-semibold text-white md:w-[70%]">
-                        <h2>{x.month}</h2>
-                        Saldo final: R$ {x.amount}
-                    </li>) : <li className="bg-green-800 flex flex-col my-2 h-[140px] w-[80vw] items-center justify-center rounded-xl text-xl font-semibold text-white md:w-[70%]">
-                        <h2>Nenhuma Categoria encontrada</h2>
-                    </li>}
-                    
-                </ul>
-            </div>
+        <section className="w-full bg-white rounded-2xl shadow-lg p-6">
+      <h2 className="text-2xl font-bold text-gray-700 mb-4">Por Mês</h2>
+
+      <ul className="flex flex-col gap-4">
+        {data.length > 0 ? (
+          data.map((x) => (
+            <li
+              key={x.month}
+              className="bg-gray-50 shadow-md rounded-xl p-5 flex flex-col items-center justify-center hover:shadow-lg transition-shadow duration-300"
+            >
+              <h3 className="text-lg font-semibold text-gray-800">{x.month}</h3>
+              <p className="text-blue-600 font-bold mt-1">Saldo final: R$ {x.amount}</p>
+            </li>
+          ))
+        ) : (
+          <li className="bg-gray-50 shadow-md rounded-xl p-5 flex flex-col items-center justify-center">
+            <h3 className="text-lg font-semibold text-gray-800">Nenhum mês encontrado</h3>
+          </li>
+        )}
+      </ul>
+    </section>
         </>
     )
 }

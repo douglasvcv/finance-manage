@@ -32,19 +32,36 @@ const DashboardCategory = () => {
     })
     return (
         <>
-            <div >
-                <ul className="flex flex-col items-center text-center w-[100%]
-                md:justify-center md:w-[60%] md:m-auto
-                ">
-                    <h1 className="mt-3 text-4xl font-[Roboto] font-bold">Por categoria:</h1>
-                    {data.length > 0 ? data.map((x: any) => <li className="bg-green-800 flex flex-col my-2 h-[140px] w-[80vw] items-center justify-center rounded-xl text-xl font-semibold text-white md:w-[70%]">
-                        <h2>{x.category}</h2>
-                        Saldo final: R$ {x.amount}
-                    </li>) : <li className="bg-green-800 flex flex-col my-2 h-[140px] w-[80vw] items-center justify-center rounded-xl text-xl font-semibold text-white md:w-[70%]">
-                        <h2>Nenhuma Categoria encontrada</h2>
-                    </li>}
-                </ul>
-            </div>
+<div className="w-full">
+      {/* Título */}
+      <h2 className="text-2xl font-bold text-gray-700 mb-4">Por Categoria</h2>
+
+      {/* Lista de categorias */}
+      <ul className="flex flex-col gap-4">
+        {data.length > 0 ? (
+          data.map((x: any, index) => (
+            <li
+              key={index}
+              className="bg-white shadow-md rounded-xl p-5 text-center border border-gray-100 hover:shadow-lg transition-shadow duration-300"
+            >
+              <h3 className="text-lg font-semibold text-gray-800">
+                {x.category}
+              </h3>
+              <p className="text-gray-600 mt-1">
+                Saldo final:{" "}
+                <span className="font-bold text-blue-600">R$ {x.amount}</span>
+              </p>
+            </li>
+          ))
+        ) : (
+          <li className="bg-white shadow-md rounded-xl p-5 text-center border border-gray-100">
+            <h3 className="text-lg font-semibold text-gray-800">
+              Nenhuma Categoria encontrada
+            </h3>
+          </li>
+        )}
+      </ul>
+    </div>
         </>
     )
 }

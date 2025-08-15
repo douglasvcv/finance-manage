@@ -3,61 +3,91 @@ import hamburguerIMG from "../../assets/images/hamburger.png"
 import closedIMG from "../../assets/images/x.png"
 import DashboardCategory from "./DashboardCategory"
 import DashboardMonth from "./DashboardMonth"
+import Navbar from "../../components/Navbar"
 
 const Dashboard = () => {
 
-    const [total, setTotal]= useState<object | any>({})
+    const [total, setTotal] = useState<object | any>({})
     const [open, setOpen] = useState<boolean>(false)
 
-    function handleMenu(){
+    function handleMenu() {
         setOpen(!open)
     }
     const token = sessionStorage.getItem("token")
-   async function fetchTotal(){
+    async function fetchTotal() {
         try {
             const data = await fetch("http://localhost:8080/api/dashboard",
                 {
-                    method:"GET",
-                    headers:{
+                    method: "GET",
+                    headers: {
                         "Content-Type": "application/json",
-                        "Authorization": "Bearer "+ token
+                        "Authorization": "Bearer " + token
                     },
                 }
             )
             const response = await data.json()
-            if(response.balance){
+            if (response.balance) {
                 setTotal(response)
             }
-            
+
         } catch (error) {
             console.log(error)
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchTotal()
     })
 
     return (
         <>
-            <div className="h-[100vh]">
-                <header className="w-[100vw] h-[63px] flex justify-center items-center shadow-xl">
-                    <ul className="flex w-[100%] items-center justify-start">
-                        <li><button><img src={open ? closedIMG : hamburguerIMG} onClick={handleMenu} className="w-[70px] cursor-pointer p-2"></img></button></li>
-                    </ul>
-                </header>
-                <ul className="flex flex-col items-center text-center w-[100%]
-                md:justify-center md:w-[60%] md:m-auto
-                ">
-                    <h1 className="mt-3 text-4xl font-[Roboto] font-bold">Dashboard:</h1>
-                    <li className="bg-green-800 flex flex-col my-2 h-[140px] w-[80vw] items-center justify-center rounded-xl text-xl font-semibold text-white md:w-[70%]">
-                        <h2>Entradas: {total.totalIncome}</h2>
-                        <h2>Saídas: {total.totalExpense}</h2>
-                        <h2>Saldo: {total.balance}</h2>
-                    </li>
-                </ul>
-                <DashboardCategory/>
-                <DashboardMonth/>
+            <div className="min-h-screen bg-gray-50">
+                {/* Navbar */}
+                <Navbar />
+
+                <main className="flex flex-col items-center text-center md:w-[60%] lg:w-1/2 md:m-auto px-4 mt-6 mb-12 space-y-8">
+
+                    {/* Título principal */}
+                    <section className="w-full bg-white rounded-2xl shadow-lg p-6">
+                        <h1 className="text-4xl font-bold text-gray-800">Dashboard</h1>
+                    </section>
+
+                    {/* Card de saldo */}
+                    <section className="w-full bg-white rounded-2xl shadow-lg p-6">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div className="flex flex-col items-center justify-center">
+                                <h2 className="text-lg font-semibold text-gray-600">Entradas</h2>
+                                <p className="text-2xl font-bold text-green-600 transition-all duration-500">
+                                    {total.totalIncome}
+                                </p>
+                            </div>
+                            <div className="flex flex-col items-center justify-center">
+                                <h2 className="text-lg font-semibold text-gray-600">Saídas</h2>
+                                <p className="text-2xl font-bold text-red-500 transition-all duration-500">
+                                    {total.totalExpense}
+                                </p>
+                            </div>
+                            <div className="flex flex-col items-center justify-center">
+                                <h2 className="text-lg font-semibold text-gray-600">Saldo</h2>
+                                <p className="text-2xl font-bold text-blue-600 transition-all duration-500">
+                                    {total.balance}
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Categorias */}
+                    <section className="w-full bg-white rounded-2xl shadow-lg p-6">
+                        <h3 className="text-2xl font-bold text-gray-700 mb-4">Categorias</h3>
+                        <DashboardCategory />
+                    </section>
+
+                    {/* Meses */}
+                    <section className="w-full bg-white rounded-2xl shadow-lg p-6">
+                        <h3 className="text-2xl font-bold text-gray-700 mb-4">Mês</h3>
+                        <DashboardMonth />
+                    </section>
+                </main>
             </div>
         </>
     )
