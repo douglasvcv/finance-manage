@@ -33,9 +33,9 @@ const Navbar = () => {
                 </div>
 
                 <ul className="p-4 space-y-4">
-                    <li><a href="#" className="block hover:text-blue-600">Home</a></li>
-                    <li><a href="#" className="block hover:text-blue-600">Sobre</a></li>
-                    <li><a href="#" className="block hover:text-blue-600">Contato</a></li>
+                    <li><Link to="/dashboard" className="block hover:text-blue-600">Home</Link></li>
+                    <li><Link to="/transacoes" className="block hover:text-blue-600">Transações</Link></li>
+                    <li><Link to="/categorias" className="block hover:text-blue-600">Categorias</Link></li>
                 </ul>
             </div>
         </>
