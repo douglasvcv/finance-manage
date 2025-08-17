@@ -57,31 +57,63 @@ const Login = () => {
     }, [ email, senha])
     return (
         <>
-            <div className="bg-[#F1F4EF] h-screen flex justify-center items-center flex-col">
-                <h1 className="text-6xl font-bold text-[#2F473F]">FinDei</h1>
-                <div className="
-                bg-white min-w-[28%] flex justify-center items-center min-h-[50%] p-[7%] rounded-2xl mt-[60px]
-                md:max-w-[50%]
-                ">
-                    <form onSubmit={(e) => handleSubmit(e)} className="
-                    flex flex-col justify-around items-center h-[100%] w-[80vw]
-                    md:w-[40w] 
-                    ">
-                        <label htmlFor="email" className="font-bold text-xl">Seu Email:</label>
-                        <input className="
-                        mb-[20px] border-none shadow-md w-[100%] h-[40px] rounded-xl text-center border cursor-pointer focus:outline-transparent
-                        md:w-[80%]
-                        " name="email" id="email" type="text" placeholder="Email" onChange={(e) => handleEmail(e)} />
-                        <label htmlFor="senha" className=" font-bold text-xl">Sua Senha:</label>
-                        <input className="
-                        mb-[20px] border-none shadow-md w-[100%] h-[40px] rounded-xl text-center border cursor-pointer focus:outline-transparent
-                        md:w-[80%]
-                        " name="senha" id="senha" type="password" placeholder="Senha" onChange={(e) => handleSenha(e)} />
-                        <button className="mt-9 mx-auto bg-black text-white w-35 h-15 text-center rounded-xl cursor-pointer" type="submit">Entrar</button>
-                        {incorreto ? <p className="text-red-800 mt-5">Login incorreto</p> : <p className="mt-5 text-green-800">Faça o login</p>}                    
-                    </form>
-                </div>
+           <div className="bg-[#F1F4EF] h-screen flex justify-center items-center flex-col font-[Roboto]">
+            <h1 className="text-5xl font-bold text-green-900">FinDei</h1>
+
+            <div className="
+                bg-white shadow-lg min-w-[28%] flex justify-center items-center min-h-[50%]
+                p-10 rounded-2xl mt-10
+                md:max-w-[40%]
+            ">
+                <form 
+                    onSubmit={handleSubmit} 
+                    className="flex flex-col justify-around items-center w-full"
+                >
+                    <label htmlFor="email" className="font-bold text-lg text-green-900 mb-2">
+                        Seu Email:
+                    </label>
+                    <input 
+                        className="
+                            mb-5 border-none shadow-md w-full h-11 rounded-xl text-center 
+                            focus:outline-none focus:ring-2 focus:ring-green-600
+                        " 
+                        name="email" 
+                        id="email" 
+                        type="text" 
+                        placeholder="Email" 
+                        onChange={handleEmail} 
+                    />
+
+                    <label htmlFor="senha" className="font-bold text-lg text-green-900 mb-2">
+                        Sua Senha:
+                    </label>
+                    <input 
+                        className="
+                            mb-5 border-none shadow-md w-full h-11 rounded-xl text-center 
+                            focus:outline-none focus:ring-2 focus:ring-green-600
+                        " 
+                        name="senha" 
+                        id="senha" 
+                        type="password" 
+                        placeholder="Senha" 
+                        onChange={handleSenha} 
+                    />
+
+                    <button 
+                        className="mt-7 px-6 py-2 bg-green-800 text-white font-semibold 
+                                   rounded-xl shadow-md hover:bg-green-700 transition"
+                        type="submit"
+                    >
+                        Entrar
+                    </button>
+
+                    {incorreto 
+                        ? <p className="text-red-800 mt-5 font-medium">Login incorreto</p> 
+                        : <p className="mt-5 text-green-800 font-medium">Faça o login</p>
+                    }                    
+                </form>
             </div>
+        </div>
         </>
     )
 }

@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react"
-import hamburguerIMG from "../../assets/images/hamburger.png"
-import closedIMG from "../../assets/images/x.png"
 import DashboardCategory from "./DashboardCategory"
 import DashboardMonth from "./DashboardMonth"
 import Navbar from "../../components/Navbar"
@@ -8,11 +6,7 @@ import Navbar from "../../components/Navbar"
 const Dashboard = () => {
 
     const [total, setTotal] = useState<object | any>({})
-    const [open, setOpen] = useState<boolean>(false)
 
-    function handleMenu() {
-        setOpen(!open)
-    }
     const token = sessionStorage.getItem("token")
     async function fetchTotal() {
         try {

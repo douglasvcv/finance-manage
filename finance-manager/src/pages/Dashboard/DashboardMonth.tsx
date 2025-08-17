@@ -8,7 +8,6 @@ const DashboardMonth = () => {
     }
 
     const [data, setData] = useState<arrayData[]>([])
-    const [monthNames, setMonthNames] = useState<string[]>([])
     
 
     async function searchDashCategory() {
