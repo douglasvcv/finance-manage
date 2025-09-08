@@ -36,17 +36,17 @@ const Dashboard = () => {
     return (
         <>
             <div className="min-h-screen bg-gray-50">
-                {/* Navbar */}
+                
                 <Navbar />
 
                 <main className="flex flex-col items-center text-center md:w-[60%] lg:w-1/2 md:m-auto px-4 mt-6 mb-12 space-y-8">
 
-                    {/* Título principal */}
+                   
                     <section className="w-full bg-white rounded-2xl shadow-lg p-6">
                         <h1 className="text-4xl font-bold text-gray-800">Dashboard</h1>
                     </section>
 
-                    {/* Card de saldo */}
+                    
                     <section className="w-full bg-white rounded-2xl shadow-lg p-6">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div className="flex flex-col items-center justify-center">
@@ -70,13 +70,13 @@ const Dashboard = () => {
                         </div>
                     </section>
 
-                    {/* Categorias */}
+                    
                     <section className="w-full bg-white rounded-2xl shadow-lg p-6">
                         <h3 className="text-2xl font-bold text-gray-700 mb-4">Categorias</h3>
                         <DashboardCategory />
                     </section>
 
-                    {/* Meses */}
+                    
                     <section className="w-full bg-white rounded-2xl shadow-lg p-6">
                         <h3 className="text-2xl font-bold text-gray-700 mb-4">Mês</h3>
                         <DashboardMonth />
