@@ -35,7 +35,7 @@ class CategoryController{
             return res.status(404).json({msg:"Nenhuma categoria encontrada!"})
         }
         
-        return res.status(200).json({msg:"Alterações realizadas!"})
+        return res.status(201).json({msg:"Alterações realizadas!"})
     }
     async delete(req:Request, res:Response){
         const {name} = req.body
