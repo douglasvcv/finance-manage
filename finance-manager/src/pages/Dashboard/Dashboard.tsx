@@ -35,7 +35,7 @@ const Dashboard = () => {
 
     return (
         <>
-            <div className="min-h-screen bg-gray-50">
+            <div className="min-h-screen bg-[#F1F4EF]">
                 
                 <Navbar />
 
@@ -43,26 +43,26 @@ const Dashboard = () => {
 
                    
                     <section className="w-full bg-white rounded-2xl shadow-lg p-6">
-                        <h1 className="text-4xl font-bold text-gray-800">Dashboard</h1>
+                        <h1 className="text-4xl font-bold text-[#2F473F]">Dashboard</h1>
                     </section>
 
                     
                     <section className="w-full bg-white rounded-2xl shadow-lg p-6">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div className="flex flex-col items-center justify-center">
-                                <h2 className="text-lg font-semibold text-gray-600">Entradas</h2>
+                                <h2 className="text-lg font-semibold text-[#2F473F]">Entradas</h2>
                                 <p className="text-2xl font-bold text-green-600 transition-all duration-500">
                                     {total.totalIncome}
                                 </p>
                             </div>
                             <div className="flex flex-col items-center justify-center">
-                                <h2 className="text-lg font-semibold text-gray-600">Saídas</h2>
+                                <h2 className="text-lg font-semibold text-[#2F473F]">Saídas</h2>
                                 <p className="text-2xl font-bold text-red-500 transition-all duration-500">
                                     {total.totalExpense}
                                 </p>
                             </div>
                             <div className="flex flex-col items-center justify-center">
-                                <h2 className="text-lg font-semibold text-gray-600">Saldo</h2>
+                                <h2 className="text-lg font-semibold text-[#2F473F]">Saldo</h2>
                                 <p className="text-2xl font-bold text-blue-600 transition-all duration-500">
                                     {total.balance}
                                 </p>
@@ -72,13 +72,13 @@ const Dashboard = () => {
 
                     
                     <section className="w-full bg-white rounded-2xl shadow-lg p-6">
-                        <h3 className="text-2xl font-bold text-gray-700 mb-4">Categorias</h3>
+                        <h3 className="text-2xl font-bold text-[#2F473F] mb-4">Categorias</h3>
                         <DashboardCategory />
                     </section>
 
                     
                     <section className="w-full bg-white rounded-2xl shadow-lg p-6">
-                        <h3 className="text-2xl font-bold text-gray-700 mb-4">Mês</h3>
+                        <h3 className="text-2xl font-bold text-[#2F473F] mb-4">Mês</h3>
                         <DashboardMonth />
                     </section>
                 </main>
