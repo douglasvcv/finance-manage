@@ -22,3 +22,6 @@ app.use("/api/auth", userRoutes)
 app.use("/api", transactionsRoutes )
 app.use("/api", dashboardRoutes)
 app.use(categoryRoutes)
+app.get("/", (req, res)=>{
+    res.send("API is running")
+})

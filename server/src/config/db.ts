@@ -9,8 +9,9 @@ async function connectDb(){
         throw new Error("Variável de ambiente não definida")
     }
     try{
-        console.log("connect database")
+        console.log(uri)
         const connection = await mongoose.connect(uri)
+        
     }catch{
         throw new Error("Connection fail")
     }
