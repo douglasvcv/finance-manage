@@ -10,7 +10,7 @@ async function connectDb(){
     }
     try{
         console.log(uri)
-        const connection = await mongoose.connect(uri)
+         await mongoose.connect(uri)
         
     }catch{
         throw new Error("Connection fail")
